@@ -14,7 +14,7 @@ class ViewController: UIViewController, WKNavigationDelegate {
     var webView: WKWebView!
     var progressView: UIProgressView!
     
-    var websites = ["apple.com", "facebook.com", "google.com"]
+    var websites = ["google.com","apple.com", "facebook.com"]
     
     override func loadView() {
         webView = WKWebView()
@@ -83,8 +83,18 @@ class ViewController: UIViewController, WKNavigationDelegate {
                     return
                 }
             }
+//            if host.contains("http://") ||  host.contains("https://"){
+                
+                let ac = UIAlertController(title: title, message: "Website Blocked \(host)",preferredStyle: .alert)
+                
+                ac.addAction(UIAlertAction(title: "Ok", style: .default))
+                
+                present(ac,animated: true)
+//            }
         }
+        
         decisionHandler(.cancel)
+        return
     }
 
 }
